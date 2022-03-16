@@ -4,7 +4,6 @@ import (
 	"os"
 
 	"github.com/owenthereal/upterm/server"
-	"github.com/owenthereal/upterm/utils"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -29,7 +28,7 @@ func Root(logger log.FieldLogger) *cobra.Command {
 		RunE:  rootCmd.Run,
 	}
 
-	cmd.PersistentFlags().StringVarP(&flagSSHAddr, "ssh-addr", "", utils.DefaultLocalhost("2222"), "ssh server address")
+	cmd.PersistentFlags().StringVarP(&flagSSHAddr, "ssh-addr", "", "0.0.0.0:2222", "ssh server address")
 	cmd.PersistentFlags().StringVarP(&flagWSAddr, "ws-addr", "", "", "websocket server address")
 	cmd.PersistentFlags().StringVarP(&flagNodeAddr, "node-addr", "", "", "node address")
 	cmd.PersistentFlags().StringSliceVarP(&flagPrivateKeys, "private-key", "", nil, "server private key")
